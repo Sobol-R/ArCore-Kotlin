@@ -16,7 +16,8 @@ import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.ShapeFactory
 import com.google.ar.sceneform.ux.ArFragment
 
-class MainActivity : AppCompatActivity() {
+class
+MainActivity : AppCompatActivity() {
 
     private var arFragment: ArFragment? = null
     private var renderable: Renderable? = null
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
         animator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationRepeat(p0: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //xTODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onAnimationEnd(p0: Animator?) {
@@ -76,11 +77,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onAnimationCancel(p0: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onAnimationStart(p0: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })
