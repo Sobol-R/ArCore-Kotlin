@@ -6,14 +6,12 @@ import android.net.sip.SipSession
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.math.MathUtils
+import banana.digital.arcorekotlin.model.Ratings
 import com.google.ar.core.HitResult
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
 import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.Color
-import com.google.ar.sceneform.rendering.MaterialFactory
-import com.google.ar.sceneform.rendering.Renderable
-import com.google.ar.sceneform.rendering.ShapeFactory
+import com.google.ar.sceneform.rendering.*
 import com.google.ar.sceneform.ux.ArFragment
 
 class
@@ -31,7 +29,8 @@ MainActivity : AppCompatActivity() {
         initialize()
 
         arFragment?.setOnTapArPlaneListener { hitResult, plane, motionEvent ->
-            addSphere(hitResult)
+            //addSphere(hitResult)
+            addRatings(hitResult)
         }
     }
 
@@ -86,6 +85,22 @@ MainActivity : AppCompatActivity() {
 
         })
         animator.start()
+    }
+
+    private fun addRatings(hitResult: HitResult) {
+        val containerNode = AnchorNode(hitResult!!.createAnchor())
+        containerNode.setParent(arFragment!!.arSceneView.scene)
+
+        val ratingsView = RatingsVeiw(this)
+        ratingsView.ratings = Ratings.createtestRatings()
+        ViewRenderable.builder()
+            .setView(this, ratingsView)
+            .build()
+            .thenAccept { renderable ->
+                val node = Node()
+                node.setParent(containerNode)
+                node.renderable = renderable
+            }
     }
 
 }
